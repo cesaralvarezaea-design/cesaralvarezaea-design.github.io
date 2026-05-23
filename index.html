@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            padding: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        .arianita {
+            font-size: 2.5rem;
+            color: #fbc2eb;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 300;
+            animation: pulseName 3s ease-in-out infinite;
+        }
+        @keyframes pulseName {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .aileen {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 2rem;
+            font-size: 1rem;
+            color: rgba(255,182,193,0.25);
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 0.2em;
+            font-style: italic;
+            z-index: 2;
+            transition: color 0.3s;
+            pointer-events: none;
+        }
+        .aileen:hover {
+            color: rgba(255,182,193,0.6);
+        }
+        h1 {
+            font-size: 7rem;
+            font-weight: 400;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 5s ease infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            user-select: none;
+            text-shadow: none;
+            line-height: 1.2;
+        }
+        h1:hover {
+            transform: scale(1.03);
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .heart {
+            font-size: 2rem;
+            color: #ff6b9d;
+            animation: heartBeat 1.5s ease-in-out infinite;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.3); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.2); }
+            60% { transform: scale(1); }
+        }
+        .subtitle {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.2em;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .subtitle a {
+            color: #fbc2eb;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+        .subtitle a:hover {
+            color: #ff9a9e;
+            border-bottom-color: #ff9a9e;
+        }
+        .photos-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .photos-grid img {
+            position: absolute;
+            object-fit: cover;
+            border-radius: 12px;
+            opacity: 0.30;
+            filter: grayscale(0.3) brightness(1.1);
+            transition: opacity 0.5s;
+        }
+        .photos-grid img:nth-child(1) { width: 28%; height: 35%; top: 8%; left: 5%; transform: rotate(-3deg); }
+        .photos-grid img:nth-child(2) { width: 22%; height: 30%; top: 55%; left: 2%; transform: rotate(2deg); }
+        .photos-grid img:nth-child(3) { width: 25%; height: 32%; top: 10%; right: 8%; transform: rotate(4deg); }
+        .photos-grid img:nth-child(4) { width: 20%; height: 28%; bottom: 12%; right: 4%; transform: rotate(-2deg); }
+        .photos-grid img:nth-child(5) { width: 24%; height: 30%; bottom: 8%; left: 40%; transform: translateX(-50%) rotate(1deg); }
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .floating-heart {
+            position: absolute;
+            bottom: -20px;
+            font-size: 1.2rem;
+            animation: rise linear infinite;
+            opacity: 0.15;
+        }
+        @keyframes rise {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.2;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(720deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        .arrow {
+            margin-top: 0.5rem;
+            font-size: 1.5rem;
+            animation: bounce 2s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="photos-grid" id="photosGrid"></div>
+    <div class="floating-hearts" id="hearts"></div>
+    <div class="container">
+        <div class="arianita">Arianita</div>
+        <div class="heart">❤</div>
+        <h1 id="forYou">For You</h1>
+        <p class="subtitle">
+            <span class="arrow">↓</span><br>
+            una playlist para ti <br>
+            <a href="https://open.spotify.com/playlist/0APmbBYm2ZSCUVCOrk3QAn?si=NrmsTLzMRaO0KnOAnRrsuQ&pi=SBYHFhhSRuumz" target="_blank">abrir en Spotify</a>
+        </p>
+        <div class="aileen">— Aileen</div>
+    </div>
+
+    <script>
+        (function() {
+            for (let i = 0; i < 120; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.getElementById('stars').appendChild(star);
+            }
+
+            const grid = document.getElementById('photosGrid');
+            for (let i = 1; i <= 5; i++) {
+                const img = document.createElement('img');
+                img.src = 'photos/photo' + i + '.jpg';
+                img.alt = '';
+                grid.appendChild(img);
+            }
+
+            const hearts = ['❤', '💕', '✨', '🌸'];
+            for (let i = 0; i < 15; i++) {
+                const h = document.createElement('div');
+                h.className = 'floating-heart';
+                h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                h.style.left = Math.random() * 100 + '%';
+                h.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+                h.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                h.style.animationDelay = Math.random() * 15 + 's';
+                document.getElementById('hearts').appendChild(h);
+            }
+
+            document.getElementById('forYou').addEventListener('click', function() {
+                window.open('https://open.spotify.com/playlist/0APmbBYm2ZSCUVCOrk3QAn?si=NrmsTLzMRaO0KnOAnRrsuQ&pi=SBYHFhhSRuumz', '_blank');
+            });
+        })();
+    </script>
+</body>
+</html>
